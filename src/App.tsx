@@ -246,12 +246,6 @@ export default function App() {
               </span>
               <span className="text-xs text-[#5f3414] font-bold">עוטפים באהבה</span>
             </div>
-            <div className="absolute -top-1 md:top-2 -left-4 md:-left-6 bg-white border border-[#d6c3b8]/40 rounded-2xl px-3.5 py-1.5 shadow-md flex items-center gap-1.5">
-              <span className="material-symbols-outlined text-[#7e5700] text-lg fill-icon">
-                nest_multi_room
-              </span>
-              <span className="text-xs text-[#5f3414] font-bold">הכוורת באריאל</span>
-            </div>
           </div>
 
           {/* Main Headline & Subtitle */}

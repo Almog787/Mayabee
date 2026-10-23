@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800&family=Heebo:wght@300;400;500;600;700;800&family=Rubik:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Rubik', 'Heebo', 'Assistant', 'Noto Sans Hebrew', sans-serif;
+  --font-heading: 'Rubik', 'Heebo', 'Assistant', 'Noto Sans Hebrew', sans-serif;
+}
+
+body, button, input, select, textarea, p, span, a, h1, h2, h3, h4, h5, h6, div, label {
+  font-family: 'Rubik', 'Heebo', 'Assistant', 'Noto Sans Hebrew', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.font-heading {
+  font-family: 'Rubik', 'Heebo', 'Assistant', 'Noto Sans Hebrew', sans-serif;
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined' !important;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.material-symbols-outlined.fill-icon {
+  font-family: 'Material Symbols Outlined' !important;
+  font-variation-settings: 'FILL' 1;
+}
+
+.honeycomb-pattern {
+  background-color: #FFFDF9;
+  background-image: radial-gradient(#F3B233 0.75px, transparent 0.75px), radial-gradient(#F7A8B8 0.75px, #FFFDF9 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+.custom-shadow-warm {
+  box-shadow: 0 10px 30px -4px rgba(122, 75, 41, 0.08);
+}
+
+.custom-shadow-soft {
+  box-shadow: 0 4px 20px -2px rgba(122, 75, 41, 0.05);
+}

@@ -6,7 +6,7 @@ import {
   sanitizeIsraeliPhone,
   buildWhatsAppUrl,
   ROTEM_PHONE,
-} from "./whatsapp";
+} from "./whatsapp.ts";
 
 test("formatParentWhatsAppMessage creates correct formatted message with Hebrew text", () => {
   const msg = formatParentWhatsAppMessage({

@@ -41,3 +41,14 @@ body, button, input, select, textarea, p, span, a, h1, h2, h3, h4, h5, h6, div, 
 .custom-shadow-soft {
   box-shadow: 0 4px 20px -2px rgba(122, 75, 41, 0.05);
 }
+
+/* Force vertical page scrolling over the daycare map canvas on touch screens */
+#kindergarten-map,
+canvas#kindergarten-map,
+.map-canvas-container,
+.map-canvas-container canvas {
+  touch-action: pan-y !important;
+  -webkit-touch-callout: none !important;
+  user-select: none;
+}
+

@@ -259,6 +259,7 @@ export function DaycareMap() {
       autoscale: false,
       global: false,
       tapEvents: false,
+      keyboardEvents: false,
       loop: {
         init() {
           // Engine initialized
@@ -525,7 +526,26 @@ export function DaycareMap() {
 
     engineRef.current = engine;
 
+    const enforceTouchAction = () => {
+      if (canvasRef.current) {
+        canvasRef.current.style.setProperty('touch-action', 'pan-y', 'important');
+      }
+    };
+    enforceTouchAction();
+
+    // Prevent any library from overriding touch-action to none
+    const observer = new MutationObserver(() => {
+      if (canvasRef.current && canvasRef.current.style.touchAction !== 'pan-y') {
+        enforceTouchAction();
+      }
+    });
+
+    if (canvasRef.current) {
+      observer.observe(canvasRef.current, { attributes: true, attributeFilter: ['style'] });
+    }
+
     return () => {
+      observer.disconnect();
       engine.quit();
     };
   }, []);
@@ -553,8 +573,6 @@ export function DaycareMap() {
     setHoveredZoneId(null);
   };
 
-  const touchStartPosRef = useRef<{ x: number; y: number; time: number } | null>(null);
-
   const selectZoneAt = (canvasX: number, canvasY: number) => {
     for (const zone of DAYCARE_ZONES) {
       if (canvasX >= zone.x && canvasX <= zone.x + zone.w && canvasY >= zone.y && canvasY <= zone.y + zone.h) {
@@ -563,36 +581,6 @@ export function DaycareMap() {
       }
     }
     return false;
-  };
-
-  const handleTouchStart = (e: React.TouchEvent<HTMLCanvasElement>) => {
-    if (e.touches.length === 1) {
-      touchStartPosRef.current = {
-        x: e.touches[0].clientX,
-        y: e.touches[0].clientY,
-        time: Date.now(),
-      };
-    }
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent<HTMLCanvasElement>) => {
-    if (!touchStartPosRef.current) return;
-    const touch = e.changedTouches[0];
-    if (!touch) return;
-
-    const dx = Math.abs(touch.clientX - touchStartPosRef.current.x);
-    const dy = Math.abs(touch.clientY - touchStartPosRef.current.y);
-    const dt = Date.now() - touchStartPosRef.current.time;
-    touchStartPosRef.current = null;
-
-    // Only select if it was a deliberate tap (minimal finger movement and quick duration)
-    // If dy >= 12 or dx >= 12, the user was scrolling or swiping smoothly!
-    if (dx < 12 && dy < 12 && dt < 450) {
-      const coords = getCanvasCoords(touch.clientX, touch.clientY);
-      if (coords) {
-        selectZoneAt(coords.x, coords.y);
-      }
-    }
   };
 
   const handleCanvasClick = (e: React.MouseEvent<HTMLCanvasElement>) => {
@@ -629,17 +617,21 @@ export function DaycareMap() {
         </div>
 
         {/* Interactive Canvas Container */}
-        <div className="relative bg-white rounded-3xl p-3 sm:p-5 shadow-xl border border-[#e4e2de] overflow-hidden">
+        <div
+          style={{ touchAction: 'pan-y' }}
+          className="relative bg-white rounded-3xl p-3 sm:p-5 shadow-xl border border-[#e4e2de] overflow-hidden map-canvas-container touch-pan-y"
+        >
           {/* Canvas Wrapper */}
-          <div className="relative w-full aspect-[800/520] max-h-[560px] mx-auto rounded-2xl overflow-hidden border border-[#e5d7c3] bg-[#fbf8f2]">
+          <div
+            style={{ touchAction: 'pan-y' }}
+            className="relative w-full aspect-[800/520] max-h-[560px] mx-auto rounded-2xl overflow-hidden border border-[#e5d7c3] bg-[#fbf8f2] touch-pan-y"
+          >
             <canvas
               ref={canvasRef}
               id="kindergarten-map"
               width={800}
               height={520}
               onClick={handleCanvasClick}
-              onTouchStart={handleTouchStart}
-              onTouchEnd={handleTouchEnd}
               onMouseMove={handleCanvasMouseMove}
               onMouseLeave={handleCanvasMouseLeave}
               style={{ touchAction: 'pan-y' }}

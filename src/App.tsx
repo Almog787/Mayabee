@@ -479,7 +479,8 @@ export default function App() {
 
           {/* ================= SCHEDULE ================= */}
           <div
-            className="p-6 md:p-8 rounded-3xl bg-[#f5f3ef] border border-[#d6c3b8]/30"
+            className="p-6 md:p-8 rounded-3xl bg-[#f5f3ef] border border-[#d6c3b8]/30 touch-pan-y"
+            style={{ touchAction: 'pan-y' }}
             id="schedule"
           >
             <div className="text-center max-w-2xl mx-auto mb-6">

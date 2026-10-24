@@ -8,8 +8,27 @@ import {
   ROTEM_PHONE,
 } from "./utils/whatsapp.ts";
 
-const LOGO_URL =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuCEcDQNrfe6hVjYHKWmKwxDdNbS-digJx_veeZRO1B694REoxl78-T_kPbu6kMfzM4DvlE11glPVo-4TS1Kworjrk6X5vPuwrJFc_euk89b6P-RWUNKeSoDK3-7_b7oe5sBrsRZ8bNl3mBdQ-fzoI74-l8vjbFEy0M1JPYVc6ZP7zGOxgsqSEutn_xdcqpBoB-LnS1V5lNcQLOYic0sXctonfGkiLgbKpp--cPewNuSZi-UEEBgmTbnsXpWqx2OSH0QpA";
+const RAW_REPO_BASE =
+  "https://raw.githubusercontent.com/Almog787/Mayabee/7556da7292780737f265ca3915efad246ff2eef9/public";
+
+// Helper to resolve asset URLs with relative paths for GitHub Pages (/Mayabee/) and fallback to GitHub raw URL
+const getAssetPath = (filename: string) => {
+  return `./${encodeURIComponent(filename)}`;
+};
+
+export const SITE_ASSETS = {
+  logo: getAssetPath("Logo Mayabee.jpg"),
+  logoFallback: `${RAW_REPO_BASE}/Logo%20Mayabee.jpg`,
+
+  hero: getAssetPath("Hero Mayabee.png"),
+  heroFallback: `${RAW_REPO_BASE}/Hero%20Mayabee.png`,
+
+  animationGif: getAssetPath("Animations Mayabee.gif"),
+  animationGifFallback: `${RAW_REPO_BASE}/Animations%20Mayabee.gif`,
+
+  photoshootGif: getAssetPath("pomelli_photoshoot_video_9_16_1024.gif"),
+  photoshootImg: getAssetPath("pomelli_photoshoot_image_16_9_1024.png"),
+};
 
 export default function App() {
   // Navigation / Modal state
@@ -79,7 +98,11 @@ export default function App() {
               <img
                 alt="הבית של מאיה - בהנהלת רותם עירון"
                 className="w-full h-full object-cover rounded-full"
-                src="/pomelli_photoshoot_video_9_16_1024.gif"
+                src={SITE_ASSETS.logo}
+                decoding="async"
+                onError={(e) => {
+                  (e.currentTarget as HTMLImageElement).src = SITE_ASSETS.logoFallback;
+                }}
               />
             </div>
             <div className="flex flex-col text-right">
@@ -260,21 +283,20 @@ export default function App() {
         <div className="absolute top-1/3 left-10 w-80 h-80 bg-[#ffd9df]/30 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10 flex flex-col items-center text-center">
-          {/* 16:9 Photoshoot Image Centerpiece */}
-          <div className="relative mb-6 group w-full max-w-2xl sm:max-w-3xl">
+          {/* Hero Main Image Showcase */}
+          <div className="relative mb-8 group w-full max-w-2xl sm:max-w-3xl">
+            {/* Main 16:9 Hero Image */}
             <div className="w-full aspect-[16/9] rounded-3xl p-1.5 md:p-2 bg-gradient-to-tr from-[#ffdeab] via-[#ffd9df] to-[#ffdeab] shadow-2xl ring-4 ring-white flex items-center justify-center transition-transform duration-300 hover:scale-[1.01] overflow-hidden">
               <img
-                alt="הבית של מאיה - תמונה מרהיבה מתוך הגן"
+                alt="הבית של מאיה - תמונת הירו של המעון באריאל"
                 className="w-full h-full object-cover rounded-[1.25rem]"
-                src="/pomelli_photoshoot_image_16_9_1024.png"
+                src={SITE_ASSETS.hero}
+                fetchPriority="high"
+                decoding="async"
+                onError={(e) => {
+                  (e.currentTarget as HTMLImageElement).src = SITE_ASSETS.heroFallback;
+                }}
               />
-            </div>
-            {/* Decorative Floating Badge */}
-            <div className="absolute -bottom-3 md:-bottom-2 -right-2 md:right-4 bg-white border border-[#d6c3b8]/40 rounded-2xl px-4 py-2 shadow-lg flex items-center gap-2">
-              <span className="material-symbols-outlined text-[#7e5700] fill-icon text-xl">
-                local_florist
-              </span>
-              <span className="text-xs md:text-sm text-[#5f3414] font-bold">עוטפים באהבה</span>
             </div>
           </div>
 

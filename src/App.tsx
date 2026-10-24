@@ -8,8 +8,9 @@ import {
   ROTEM_PHONE,
 } from "./utils/whatsapp.ts";
 
-const LOGO_URL =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuCEcDQNrfe6hVjYHKWmKwxDdNbS-digJx_veeZRO1B694REoxl78-T_kPbu6kMfzM4DvlE11glPVo-4TS1Kworjrk6X5vPuwrJFc_euk89b6P-RWUNKeSoDK3-7_b7oe5sBrsRZ8bNl3mBdQ-fzoI74-l8vjbFEy0M1JPYVc6ZP7zGOxgsqSEutn_xdcqpBoB-LnS1V5lNcQLOYic0sXctonfGkiLgbKpp--cPewNuSZi-UEEBgmTbnsXpWqx2OSH0QpA";
+import logoGif from "./assets/pomelli_photoshoot_video_9_16_1024.gif";
+
+const LOGO_URL = logoGif;
 
 export default function App() {
   // Navigation / Modal state
@@ -1062,11 +1063,20 @@ export default function App() {
       <footer className="bg-[#e4e2de] border-t border-[#d6c3b8]/40 w-full mt-auto">
         <div className="w-full max-w-7xl mx-auto px-4 md:px-8 py-10 flex flex-col md:flex-row justify-between items-center gap-6">
           {/* Brand & Copyright */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-right gap-1">
-            <span className="text-xl font-bold text-[#5f3414] font-heading">הבית של מאיה</span>
-            <p className="text-xs text-[#51443c]">
-              © כל הזכויות שמורות לבית של מאיה - בהנהלת רותם עירון, אריאל
-            </p>
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-full p-0.5 bg-[#ffdeab] ring-2 ring-[#7a4b29]/20 overflow-hidden shadow-sm flex items-center justify-center shrink-0">
+              <img
+                alt="הבית של מאיה - בהנהלת רותם עירון"
+                className="w-full h-full object-cover rounded-full"
+                src={LOGO_URL}
+              />
+            </div>
+            <div className="flex flex-col items-center md:items-start text-center md:text-right gap-0.5">
+              <span className="text-xl font-bold text-[#5f3414] font-heading">הבית של מאיה</span>
+              <p className="text-xs text-[#51443c]">
+                © כל הזכויות שמורות לבית של מאיה - בהנהלת רותם עירון, אריאל
+              </p>
+            </div>
           </div>
           {/* Interactive Policy & Info Modals */}
           <nav className="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold">

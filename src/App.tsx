@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { PolicyModal, ModalType } from "./components/PolicyModal";
+import { DaycareMap } from "./components/DaycareMap.tsx";
 import {
   formatParentWhatsAppMessage,
   formatCareerWhatsAppMessage,
   buildWhatsAppUrl,
   ROTEM_PHONE,
-} from "./utils/whatsapp";
+} from "./utils/whatsapp.ts";
 
 const LOGO_URL =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuCEcDQNrfe6hVjYHKWmKwxDdNbS-digJx_veeZRO1B694REoxl78-T_kPbu6kMfzM4DvlE11glPVo-4TS1Kworjrk6X5vPuwrJFc_euk89b6P-RWUNKeSoDK3-7_b7oe5sBrsRZ8bNl3mBdQ-fzoI74-l8vjbFEy0M1JPYVc6ZP7zGOxgsqSEutn_xdcqpBoB-LnS1V5lNcQLOYic0sXctonfGkiLgbKpp--cPewNuSZi-UEEBgmTbnsXpWqx2OSH0QpA";
@@ -29,6 +30,9 @@ export default function App() {
   const [careerCity, setCareerCity] = useState("אריאל");
   const [careerExp, setCareerExp] = useState("");
   const [careerSubmitted, setCareerSubmitted] = useState(false);
+
+  // FAQ Accordion State
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
   const handleParentSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -104,9 +108,21 @@ export default function App() {
             </a>
             <a
               className="text-[#51443c] hover:text-[#5f3414] transition-colors"
+              href="#map"
+            >
+              מפת הגן (2D)
+            </a>
+            <a
+              className="text-[#51443c] hover:text-[#5f3414] transition-colors"
               href="#schedule"
             >
               סדר היום
+            </a>
+            <a
+              className="text-[#51443c] hover:text-[#5f3414] transition-colors"
+              href="#faq"
+            >
+              שאלות נפוצות
             </a>
             <a
               className="text-[#51443c] hover:text-[#5f3414] transition-colors"
@@ -132,7 +148,7 @@ export default function App() {
           <div className="flex items-center gap-2">
             <a
               className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#efeeea] hover:bg-[#eae8e4] text-[#5f3414] text-xs font-bold active:scale-95 transition-all"
-              href="tel:0500000000"
+              href="tel:0528707056"
             >
               <span className="material-symbols-outlined text-[#5f3414] text-base">call</span>
               <span>חייגו אלינו</span>
@@ -180,10 +196,24 @@ export default function App() {
             </a>
             <a
               className="block p-2 rounded-lg text-[#51443c] hover:bg-[#fbf9f5]"
+              href="#map"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              סיור במפת הגן (2D)
+            </a>
+            <a
+              className="block p-2 rounded-lg text-[#51443c] hover:bg-[#fbf9f5]"
               href="#schedule"
               onClick={() => setMobileMenuOpen(false)}
             >
               סדר היום
+            </a>
+            <a
+              className="block p-2 rounded-lg text-[#51443c] hover:bg-[#fbf9f5]"
+              href="#faq"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              שאלות נפוצות
             </a>
             <a
               className="block p-2 rounded-lg text-[#51443c] hover:bg-[#fbf9f5]"
@@ -208,7 +238,7 @@ export default function App() {
             </a>
             <a
               className="block p-2 rounded-lg bg-[#25D366] text-white flex items-center gap-1.5"
-              href="https://wa.me/972500000000?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%A8%D7%95%D7%AA%D7%9D%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A0%D7%95%D7%A1%D7%A4%D7%99%D7%9D!"
+              href={`https://wa.me/${ROTEM_PHONE}?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%A8%D7%95%D7%AA%D7%9D%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A0%D7%95%D7%A1%D7%A4%D7%99%D7%9D!`}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMobileMenuOpen(false)}
@@ -505,6 +535,9 @@ export default function App() {
           </div>
         </div>
       </section>
+
+      {/* ================= INTERACTIVE 2D DAYCARE MAP (litecanvas) ================= */}
+      <DaycareMap />
 
       {/* ================= SECTION 3: PARENT REGISTRATION FORM ================= */}
       <section
@@ -857,6 +890,78 @@ export default function App() {
         </div>
       </section>
 
+      {/* ================= SECTION 4.5: FAQ ACCORDION (SEO & PARENT GUIDANCE) ================= */}
+      <section className="py-14 bg-white border-t border-[#d6c3b8]/30 scroll-mt-16" id="faq">
+        <div className="max-w-4xl mx-auto px-4 md:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ffdeab]/60 text-[#7e5700] text-xs font-bold mb-2">
+              <span className="material-symbols-outlined text-sm">help_outline</span>
+              מידע חשוב להורים
+            </span>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#5f3414] font-heading">
+              שאלות ותשובות נפוצות על הבית של מאיה באריאל
+            </h2>
+            <p className="text-sm text-[#51443c] mt-1">
+              ריכזנו עבורכם את התשובות לשאלות שכל הורה שואל בבחירת פעוטון, משפחתון וצהרון באריאל
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            {[
+              {
+                q: "לאילו גילאים מיועד 'הבית של מאיה' באריאל?",
+                a: "המסגרת מחולקת לשני מסלולים עיקריים: פעוטון ומשפחתון לקטנטנים מגיל 3 חודשים ועד 3 שנים בקבוצות גיל אינטימיות עם יחס מטפלת-ילד מיטבי, וצהרון עשיר וחווייתי לילדי גנים ובתי ספר עד כיתה ב' הכולל ארוחה חמה, עזרה בשיעורים וחוגים.",
+              },
+              {
+                q: "מהן שעות הפעילות של הגן והצהרון באריאל?",
+                a: "הפעוטון פועל בימים ראשון עד חמישי בין השעות 07:30 ל-17:00 (ניתן לבחור מסלול עד 16:30). בימי שישי וערבי חג הגן פועל בין 07:30 ל-12:30. הצהרון פועל משעת סיום מוסדות החינוך ועד השעה 17:00.",
+              },
+              {
+                q: "מה כולל התפריט והתזונה היומית בגן?",
+                a: "אנחנו מקפידים על בישול טרי במקום בכל בוקר! התפריט כולל ארוחת בוקר ישראלית מזינה (ביצים, לחם מלא, ירקות וממרחים), ארוחת צהריים חמה ומאוזנת (עוף/בשר/קטניות, תוספת פחמימה מורכבת ומבחר ירקות מבושלים), וארוחת מנחה קלה. קיימת התאמה קפדנית לאלרגיות ולרגישויות מזון.",
+              },
+              {
+                q: "מהם נהלי הבטיחות, הפיקוח והמיגון בגן?",
+                a: "הגן פועל ברישיון ופיקוח מחמירים. שערי הכניסה נעולים בקודן מאובטח, החצר מוצלת ב-95% הגנת UV ומרופדת במשטחי בלימה תקניים, הצעצועים והמתקנים בעלי תו תקן ישראלי, והצוות עובר הכשרות עזרה ראשונה והחייאת פעוטות בתדירות קבועה.",
+              },
+              {
+                q: "כיצד מתבצע תהליך ההסתגלות לקטנטנים חדשים?",
+                a: "אנו מאמינים בהסתגלות הדרגתית, רגישה ועוטפת המותאמת לקצב האישי של כל ילד והורה. בימים הראשונים שעות השהות נבנות בהדרגה יחד עם נוכחות ההורה, כדי ליצור אמון וחיבור בטוח עם רותם והצוות.",
+              },
+              {
+                q: "איך יוצרים קשר ומתאמים סיור היכרות עם רותם עירון?",
+                a: "הכי קל ומהיר! לוחצים על כפתור הווטסאפ באתר או מתקשרים ישירות לטלפון 052-8707056. רותם תשמח לשוחח, לענות על כל שאלה ולתאם מועד נוח לסיור אישי והתרשמות מהגן באריאל.",
+              },
+            ].map((item, idx) => {
+              const isOpen = openFaqIndex === idx;
+              return (
+                <div
+                  key={idx}
+                  className="rounded-2xl border border-[#d6c3b8]/40 bg-[#fbf9f5] overflow-hidden transition-all duration-200"
+                >
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
+                    className="w-full p-4 sm:p-5 text-right flex items-center justify-between gap-3 font-bold text-sm sm:text-base text-[#5f3414] hover:bg-[#f5f3ef] transition-colors cursor-pointer"
+                    aria-expanded={isOpen}
+                  >
+                    <span>{item.q}</span>
+                    <span className="material-symbols-outlined text-[#7e5700] text-xl transition-transform duration-200 shrink-0">
+                      {isOpen ? "expand_less" : "expand_more"}
+                    </span>
+                  </button>
+                  {isOpen && (
+                    <div className="px-4 pb-4 sm:px-5 sm:pb-5 text-xs sm:text-sm text-[#51443c] leading-relaxed border-t border-[#e4e2de]/60 pt-3">
+                      {item.a}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* ================= SECTION 5: CONTACT & LOCATION ================= */}
       <section className="py-14 bg-[#f5f3ef] border-t border-[#d6c3b8]/30" id="contact">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
@@ -898,14 +1003,14 @@ export default function App() {
             <div className="p-6 rounded-2xl bg-white border border-[#d6c3b8]/30 flex flex-col items-center justify-center text-center gap-3 shadow-sm">
               <a
                 className="w-full py-2.5 px-4 rounded-xl bg-[#7a4b29] text-white text-xs font-bold flex items-center justify-center gap-2 hover:bg-[#5f3414] transition-all"
-                href="tel:0500000000"
+                href="tel:0528707056"
               >
                 <span className="material-symbols-outlined text-base">call</span>
-                <span>שיחה טלפונית לבירורים</span>
+                <span>שיחה ישירה לרותם (052-8707056)</span>
               </a>
               <a
                 className="w-full py-2.5 px-4 rounded-xl bg-[#25D366] text-white text-xs font-bold flex items-center justify-center gap-2 hover:bg-[#1EBE5D] transition-all"
-                href="https://wa.me/972500000000?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%A8%D7%95%D7%AA%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%92%D7%9F%20%D7%91%D7%90%D7%A8%D7%99%D7%90%D7%9C"
+                href={`https://wa.me/${ROTEM_PHONE}?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%A8%D7%95%D7%AA%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%92%D7%9F%20%D7%91%D7%90%D7%A8%D7%99%D7%90%D7%9C`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -923,7 +1028,7 @@ export default function App() {
           {/* Call Button */}
           <a
             className="flex-1 py-2 px-2.5 rounded-xl bg-[#efeeea] text-[#5f3414] text-xs font-bold flex items-center justify-center gap-1 active:scale-95 transition-all text-center"
-            href="tel:0500000000"
+            href="tel:0528707056"
           >
             <span className="material-symbols-outlined text-base">call</span>
             <span>חייגו אלינו</span>
@@ -931,7 +1036,7 @@ export default function App() {
           {/* WhatsApp Button */}
           <a
             className="flex-1 py-2 px-2.5 rounded-xl bg-[#25D366] text-white text-xs font-bold flex items-center justify-center gap-1 active:scale-95 transition-all text-center"
-            href="https://wa.me/972500000000?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%A8%D7%95%D7%AA%D7%9D%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A0%D7%95%D7%A1%D7%A4%D7%99%D7%9D!"
+            href={`https://wa.me/${ROTEM_PHONE}?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%A8%D7%95%D7%AA%D7%9D%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A0%D7%95%D7%A1%D7%A4%D7%99%D7%9D!`}
             target="_blank"
             rel="noopener noreferrer"
           >

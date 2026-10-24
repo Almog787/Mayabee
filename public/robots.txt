@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://almog787.github.io/Mayabee/sitemap.xml

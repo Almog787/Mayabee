@@ -260,21 +260,21 @@ export default function App() {
         <div className="absolute top-1/3 left-10 w-80 h-80 bg-[#ffd9df]/30 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10 flex flex-col items-center text-center">
-          {/* Photoshoot Showcase Centerpiece */}
-          <div className="relative mb-6 group">
-            <div className="w-52 sm:w-60 md:w-64 aspect-[9/16] rounded-3xl p-1.5 bg-gradient-to-tr from-[#ffdeab] via-[#ffd9df] to-[#ffdeab] shadow-2xl ring-4 ring-white flex items-center justify-center transition-transform duration-300 hover:scale-[1.02] overflow-hidden">
+          {/* 16:9 Photoshoot Image Centerpiece */}
+          <div className="relative mb-6 group w-full max-w-2xl sm:max-w-3xl">
+            <div className="w-full aspect-[16/9] rounded-3xl p-1.5 md:p-2 bg-gradient-to-tr from-[#ffdeab] via-[#ffd9df] to-[#ffdeab] shadow-2xl ring-4 ring-white flex items-center justify-center transition-transform duration-300 hover:scale-[1.01] overflow-hidden">
               <img
-                alt="הבית של מאיה - הצצה לפעילות במעון"
+                alt="הבית של מאיה - תמונה מרהיבה מתוך הגן"
                 className="w-full h-full object-cover rounded-[1.25rem]"
-                src="/pomelli_photoshoot_video_9_16_1024.gif"
+                src="/pomelli_photoshoot_image_16_9_1024.png"
               />
             </div>
-            {/* Decorative Floating Badges */}
-            <div className="absolute -bottom-2 md:bottom-2 -right-4 md:-right-6 bg-white border border-[#d6c3b8]/40 rounded-2xl px-3.5 py-1.5 shadow-md flex items-center gap-1.5">
-              <span className="material-symbols-outlined text-[#7e5700] fill-icon text-lg">
+            {/* Decorative Floating Badge */}
+            <div className="absolute -bottom-3 md:-bottom-2 -right-2 md:right-4 bg-white border border-[#d6c3b8]/40 rounded-2xl px-4 py-2 shadow-lg flex items-center gap-2">
+              <span className="material-symbols-outlined text-[#7e5700] fill-icon text-xl">
                 local_florist
               </span>
-              <span className="text-xs text-[#5f3414] font-bold">עוטפים באהבה</span>
+              <span className="text-xs md:text-sm text-[#5f3414] font-bold">עוטפים באהבה</span>
             </div>
           </div>
 

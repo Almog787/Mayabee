@@ -79,7 +79,7 @@ export default function App() {
               <img
                 alt="הבית של מאיה - בהנהלת רותם עירון"
                 className="w-full h-full object-cover rounded-full"
-                src={LOGO_URL}
+                src="/pomelli_photoshoot_video_9_16_1024.gif"
               />
             </div>
             <div className="flex flex-col text-right">

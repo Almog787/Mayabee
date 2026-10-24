@@ -4,21 +4,19 @@
 
 ---
 
-## 🌐 קישורי האתר והסביבות (Website URLs)
+## 🌐 כתובת האתר (Website URL)
 
-* 🚀 **כתובת האתר הראשית (GitHub Pages / Production):** [https://almog787.github.io/Mayabee/](https://almog787.github.io/Mayabee/)
-* 🔗 **סביבת תצוגה מקדימה (Shared App URL):** [https://ais-pre-fgqhbwsofurznftslarmje-495191051434.europe-west2.run.app](https://ais-pre-fgqhbwsofurznftslarmje-495191051434.europe-west2.run.app)
-* 🛠️ **סביבת פיתוח בזמן אמת (Dev Environment):** [https://ais-dev-fgqhbwsofurznftslarmje-495191051434.europe-west2.run.app](https://ais-dev-fgqhbwsofurznftslarmje-495191051434.europe-west2.run.app)
+* 🚀 **אתר האינטרנט הרשמי:** [https://almog787.github.io/Mayabee/](https://almog787.github.io/Mayabee/)
 
 ---
 
 ## 🖼️ מדיה, תמונות ולוגו הגן (Brand Assets & Media)
 
-| אלמנט | פרטים ומקור קובץ | תצוגה מקדימה / קישור |
-| :--- | :--- | :--- |
-| **לוגו הגן** | לוגו רשמי - הבית של מאיה | ![לוגו הגן](https://lh3.googleusercontent.com/aida-public/AB6AXuCEcDQNrfe6hVjYHKWmKwxDdNbS-digJx_veeZRO1B694REoxl78-T_kPbu6kMfzM4DvlE11glPVo-4TS1Kworjrk6X5vPuwrJFc_euk89b6P-RWUNKeSoDK3-7_b7oe5sBrsRZ8bNl3mBdQ-fzoI74-l8vjbFEy0M1JPYVc6ZP7zGOxgsqSEutn_xdcqpBoB-LnS1V5lNcQLOYic0sXctonfGkiLgbKpp--cPewNuSZi-UEEBgmTbnsXpWqx2OSH0QpA) |
-| **תמונת הירו (16:9)** | `public/pomelli_photoshoot_image_16_9_1024.png` | תמונת סשן צילומים מרהיבה המשולבת במרכז ה-Hero בפורמט רחב |
-| **סרטון GIF דינמי (9:16)** | `public/pomelli_photoshoot_video_9_16_1024.gif` | קובץ GIF פעיל המשולב בסרגל הניווט העליון ובגלריית הווידאו |
+| אלמנט | פרטים ומקור קובץ |
+| :--- | :--- |
+| **לוגו הגן** | `public/Logo Mayabee.jpg` - לוגו רשמי של הבית של מאיה |
+| **תמונת הירו (16:9)** | `public/Hero Mayabee.png` - תמונה ראשית מרהיבה המשולבת במרכז ה-Hero |
+| **אנימציית GIF** | `public/Animations Mayabee.gif` - קובץ GIF פועל המציג את שגרת הגן |
 
 ---
 
@@ -60,24 +58,6 @@
 * **Tailwind CSS v4**
 * **litecanvas Engine (Interactive 2D Canvas Map)**
 * **Lucide React & Material Symbols Outlined Icons**
-
----
-
-## 💻 הרצה ופיתוח מקומי (Local Development)
-
-```bash
-# התקנת תלויות
-npm install
-
-# הרצת שרת הפיתוח (port 3000)
-npm run dev
-
-# בדיקת סגנון וטיפוסים (Lint)
-npm run lint
-
-# בניית גרסת פרודקשן (Build)
-npm run build
-```
 
 ---
 

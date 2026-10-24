@@ -260,13 +260,13 @@ export default function App() {
         <div className="absolute top-1/3 left-10 w-80 h-80 bg-[#ffd9df]/30 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10 flex flex-col items-center text-center">
-          {/* Logo Emblem Centerpiece */}
+          {/* Photoshoot Showcase Centerpiece */}
           <div className="relative mb-6 group">
-            <div className="w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full p-2 bg-gradient-to-tr from-[#ffdeab] via-[#ffd9df] to-[#ffdeab] shadow-xl ring-4 ring-white flex items-center justify-center transition-transform duration-300 hover:scale-[1.02]">
+            <div className="w-52 sm:w-60 md:w-64 aspect-[9/16] rounded-3xl p-1.5 bg-gradient-to-tr from-[#ffdeab] via-[#ffd9df] to-[#ffdeab] shadow-2xl ring-4 ring-white flex items-center justify-center transition-transform duration-300 hover:scale-[1.02] overflow-hidden">
               <img
-                alt="הבית של מאיה - בהנהלת רותם עירון"
-                className="w-full h-full object-cover rounded-full"
-                src={LOGO_URL}
+                alt="הבית של מאיה - הצצה לפעילות במעון"
+                className="w-full h-full object-cover rounded-[1.25rem]"
+                src="/pomelli_photoshoot_video_9_16_1024.gif"
               />
             </div>
             {/* Decorative Floating Badges */}

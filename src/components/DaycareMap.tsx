@@ -258,6 +258,7 @@ export function DaycareMap() {
       height: 520,
       autoscale: false,
       global: false,
+      tapEvents: false,
       loop: {
         init() {
           // Engine initialized
@@ -552,15 +553,52 @@ export function DaycareMap() {
     setHoveredZoneId(null);
   };
 
+  const touchStartPosRef = useRef<{ x: number; y: number; time: number } | null>(null);
+
+  const selectZoneAt = (canvasX: number, canvasY: number) => {
+    for (const zone of DAYCARE_ZONES) {
+      if (canvasX >= zone.x && canvasX <= zone.x + zone.w && canvasY >= zone.y && canvasY <= zone.y + zone.h) {
+        setSelectedZone(zone);
+        return true;
+      }
+    }
+    return false;
+  };
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLCanvasElement>) => {
+    if (e.touches.length === 1) {
+      touchStartPosRef.current = {
+        x: e.touches[0].clientX,
+        y: e.touches[0].clientY,
+        time: Date.now(),
+      };
+    }
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent<HTMLCanvasElement>) => {
+    if (!touchStartPosRef.current) return;
+    const touch = e.changedTouches[0];
+    if (!touch) return;
+
+    const dx = Math.abs(touch.clientX - touchStartPosRef.current.x);
+    const dy = Math.abs(touch.clientY - touchStartPosRef.current.y);
+    const dt = Date.now() - touchStartPosRef.current.time;
+    touchStartPosRef.current = null;
+
+    // Only select if it was a deliberate tap (minimal finger movement and quick duration)
+    // If dy >= 12 or dx >= 12, the user was scrolling or swiping smoothly!
+    if (dx < 12 && dy < 12 && dt < 450) {
+      const coords = getCanvasCoords(touch.clientX, touch.clientY);
+      if (coords) {
+        selectZoneAt(coords.x, coords.y);
+      }
+    }
+  };
+
   const handleCanvasClick = (e: React.MouseEvent<HTMLCanvasElement>) => {
     const coords = getCanvasCoords(e.clientX, e.clientY);
     if (!coords) return;
-    for (const zone of DAYCARE_ZONES) {
-      if (coords.x >= zone.x && coords.x <= zone.x + zone.w && coords.y >= zone.y && coords.y <= zone.y + zone.h) {
-        setSelectedZone(zone);
-        break;
-      }
-    }
+    selectZoneAt(coords.x, coords.y);
   };
 
   const handleCardClick = (zone: DaycareZone) => {
@@ -600,9 +638,12 @@ export function DaycareMap() {
               width={800}
               height={520}
               onClick={handleCanvasClick}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
               onMouseMove={handleCanvasMouseMove}
               onMouseLeave={handleCanvasMouseLeave}
-              className="w-full h-full block cursor-pointer select-none touch-manipulation"
+              style={{ touchAction: 'pan-y' }}
+              className="w-full h-full block cursor-pointer select-none touch-pan-y"
               aria-label="מפה אינטראקטיבית של גן הילדים הבית של מאיה באריאל"
             />
           </div>

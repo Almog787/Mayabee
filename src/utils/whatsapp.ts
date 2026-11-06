@@ -1,5 +1,5 @@
 /**
- * WhatsApp message generation & phone utility for 'הבית של מאיה'
+ * WhatsApp message generation & phone utility for 'הבית של רותם ומאיה'
  */
 
 export const ROTEM_PHONE = "972500000000";
@@ -29,7 +29,7 @@ export function formatParentWhatsAppMessage(data: ParentFormData): string {
   const phone = data.phone.trim();
   const notes = data.notes?.trim();
 
-  let msg = `שלום רותם, הגעתי דרך האתר! אשמח לקבל פרטים נוספים על 'הבית של מאיה' באריאל.\n` +
+  let msg = `שלום רותם, הגעתי דרך האתר! אשמח לקבל פרטים נוספים על 'הבית של רותם ומאיה' באריאל.\n` +
     `שם ההורה: ${name}\n` +
     `שם הילד/ה וגיל: ${child}\n` +
     `עיר מגורים: ${city}\n` +
@@ -53,7 +53,7 @@ export function formatCareerWhatsAppMessage(data: CareerFormData): string {
   const exp = data.experience.trim();
 
   return (
-    `שלום רותם, שמי ${name} ואשמח להגיש מועמדות לעבודה ב'הבית של מאיה' באריאל!\n` +
+    `שלום רותם, שמי ${name} ואשמח להגיש מועמדות לעבודה ב'הבית של רותם ומאיה' באריאל!\n` +
     `פרטי המועמד/ת:\n` +
     `שם מלא: ${name}\n` +
     `עיר: ${city}\n` +

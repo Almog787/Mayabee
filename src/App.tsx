@@ -17,17 +17,17 @@ const getAssetPath = (filename: string) => {
 };
 
 export const SITE_ASSETS = {
-  logo: getAssetPath("Logo Mayabee.jpg"),
-  logoFallback: `${RAW_REPO_BASE}/Logo%20Mayabee.jpg`,
+  logo: getAssetPath("New logo.jpg"),
+  logoFallback: `${RAW_REPO_BASE}/New%20logo.jpg`,
 
-  hero: getAssetPath("Hero Mayabee.png"),
-  heroFallback: `${RAW_REPO_BASE}/Hero%20Mayabee.png`,
+  hero: getAssetPath("New hero.jpg"),
+  heroFallback: `${RAW_REPO_BASE}/New%20hero.jpg`,
 
   animationGif: getAssetPath("Animations Mayabee.gif"),
   animationGifFallback: `${RAW_REPO_BASE}/Animations%20Mayabee.gif`,
 
   photoshootGif: getAssetPath("pomelli_photoshoot_video_9_16_1024.gif"),
-  photoshootImg: getAssetPath("pomelli_photoshoot_image_16_9_1024.png"),
+  photoshootImg: getAssetPath("IMG-20261106-WA0017.jpg"),
 };
 
 export default function App() {
@@ -96,7 +96,7 @@ export default function App() {
           >
             <div className="w-11 h-11 rounded-full p-0.5 bg-[#ffdeab] ring-2 ring-[#7a4b29]/20 overflow-hidden shadow-sm flex items-center justify-center">
               <img
-                alt="הבית של מאיה - בהנהלת רותם עירון"
+                alt="הבית של רותם ומאיה"
                 className="w-full h-full object-cover rounded-full"
                 src={SITE_ASSETS.logo}
                 decoding="async"
@@ -107,10 +107,10 @@ export default function App() {
             </div>
             <div className="flex flex-col text-right">
               <span className="text-xl font-bold text-[#5f3414] leading-tight font-heading">
-                הבית של מאיה
+                הבית של רותם ומאיה
               </span>
               <span className="text-xs text-[#51443c] font-medium">
-                בהנהלת רותם עירון • אריאל
+                פעוטון, משפחתון וצהרון • אריאל
               </span>
             </div>
           </a>
@@ -284,12 +284,12 @@ export default function App() {
 
         <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10 flex flex-col items-center text-center">
           {/* Hero Main Image Showcase */}
-          <div className="relative mb-8 group w-full max-w-2xl sm:max-w-3xl">
-            {/* Main 16:9 Hero Image */}
-            <div className="w-full aspect-[16/9] rounded-3xl p-1.5 md:p-2 bg-gradient-to-tr from-[#ffdeab] via-[#ffd9df] to-[#ffdeab] shadow-2xl ring-4 ring-white flex items-center justify-center transition-transform duration-300 hover:scale-[1.01] overflow-hidden">
+          <div className="relative mb-8 group w-full max-w-xl sm:max-w-2xl flex justify-center">
+            {/* Elegant Emblem Frame - ensures full image is visible without cropping */}
+            <div className="w-full max-w-[480px] sm:max-w-[540px] rounded-3xl p-3 md:p-4 bg-gradient-to-tr from-[#ffdeab]/80 via-[#ffffff] to-[#ffd9df]/80 shadow-2xl ring-4 ring-white/90 flex items-center justify-center transition-transform duration-300 hover:scale-[1.01]">
               <img
-                alt="הבית של מאיה - תמונת הירו של המעון באריאל"
-                className="w-full h-full object-cover rounded-[1.25rem]"
+                alt="הבית של רותם ומאיה - תמונת הירו של המעון באריאל"
+                className="w-full h-auto max-h-[460px] object-contain rounded-2xl drop-shadow-sm"
                 src={SITE_ASSETS.hero}
                 fetchPriority="high"
                 decoding="async"
@@ -307,10 +307,10 @@ export default function App() {
               <span>פעוטון וצהרון מומלץ באריאל</span>
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#5f3414] tracking-tight leading-tight font-heading">
-              הבית החם והמתוק של הילדים שלכם באריאל
+              הבית של רותם ומאיה – הבית החם של הילדים באריאל
             </h1>
             <p className="text-base sm:text-lg text-[#51443c] max-w-2xl mx-auto leading-relaxed">
-              מסגרת חינוכית עשירה בחום, אהבה, למידה חווייתית וביטחון מלא. בהנהלת רותם עירון.
+              מסגרת חינוכית עשירה בחום, אהבה, למידה חווייתית וביטחון מלא באריאל.
             </p>
           </div>
 
@@ -378,7 +378,7 @@ export default function App() {
               מה מחכה בכוורת שלנו?
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold text-[#5f3414] font-heading">
-              למה הורים באריאל בוחרים בבית של מאיה?
+              למה הורים באריאל בוחרים בבית של רותם ומאיה?
             </h2>
             <p className="text-sm sm:text-base text-[#51443c] mt-2">
               אנחנו מאמינים שכל ילד וילדה זקוקים לקרקע בטוחה, אווירה נינוחה והרבה חום כדי לגלות את
@@ -431,7 +431,7 @@ export default function App() {
                     הנהלה מקצועית ובעלת ניסיון
                   </h3>
                   <p className="text-sm text-[#51443c] mt-2 leading-relaxed">
-                    בהנהלת רותם עירון – ליווי מקצועי רציף, סטנדרטים פדגוגיים מוקפדים, תקשורת פתוחה
+                    ליווי מקצועי רציף, סטנדרטים פדגוגיים מוקפדים, תקשורת פתוחה
                     ושותפות אמיתית עם ההורים לאורך כל השנה.
                   </p>
                 </div>
@@ -746,7 +746,7 @@ export default function App() {
                 <span>רוצה לגדול ולהתפתח איתנו?</span>
               </div>
               <h2 className="text-2xl md:text-3xl font-bold text-[#5f3414] leading-tight font-heading">
-                דרושות נשות צוות חמות ואוהבות למשפחת "הבית של מאיה" באריאל!
+                דרושות נשות צוות חמות ואוהבות למשפחת "הבית של רותם ומאיה" באריאל!
               </h2>
               <p className="text-sm text-[#51443c] leading-relaxed">
                 אם יש לך תשוקה אמיתית לחינוך הגיל הרך, סבלנות, חיוך רחב ורצון לעבוד בסביבה תומכת,
@@ -791,7 +791,7 @@ export default function App() {
                       הדרכה וליווי מקצועי שוטף
                     </p>
                     <p className="text-xs text-[#51443c]">
-                      ליווי אישי בהנהלת רותם עירון המאפשר צמיחה מקצועית איכותית.
+                      ליווי אישי ומקצועי המאפשר צמיחה איכותית.
                     </p>
                   </div>
                 </div>
@@ -806,7 +806,7 @@ export default function App() {
                     טופס הגשת מועמדות מהיר
                   </span>
                   <h3 className="text-xl font-bold text-[#5f3414] mt-1 font-heading">
-                    הצטרפי למשפחת הבית של מאיה
+                    הצטרפי למשפחת הבית של רותם ומאיה
                   </h3>
                   <p className="text-xs text-[#51443c]">
                     השאירי פרטים ונשוחח בהקדם לקביעת ראיון הכרות
@@ -922,7 +922,7 @@ export default function App() {
               מידע חשוב להורים
             </span>
             <h2 className="text-2xl md:text-3xl font-bold text-[#5f3414] font-heading">
-              שאלות ותשובות נפוצות על הבית של מאיה באריאל
+              שאלות ותשובות נפוצות על הבית של רותם ומאיה באריאל
             </h2>
             <p className="text-sm text-[#51443c] mt-1">
               ריכזנו עבורכם את התשובות לשאלות שכל הורה שואל בבחירת פעוטון, משפחתון וצהרון באריאל
@@ -932,7 +932,7 @@ export default function App() {
           <div className="space-y-3">
             {[
               {
-                q: "לאילו גילאים מיועד 'הבית של מאיה' באריאל?",
+                q: "לאילו גילאים מיועד 'הבית של רותם ומאיה' באריאל?",
                 a: "המסגרת מחולקת לשני מסלולים עיקריים: פעוטון ומשפחתון לקטנטנים מגיל 3 חודשים ועד 3 שנים בקבוצות גיל אינטימיות עם יחס מטפלת-ילד מיטבי, וצהרון עשיר וחווייתי לילדי גנים ובתי ספר עד כיתה ב' הכולל ארוחה חמה, עזרה בשיעורים וחוגים.",
               },
               {
@@ -952,7 +952,7 @@ export default function App() {
                 a: "אנו מאמינים בהסתגלות הדרגתית, רגישה ועוטפת המותאמת לקצב האישי של כל ילד והורה. בימים הראשונים שעות השהות נבנות בהדרגה יחד עם נוכחות ההורה, כדי ליצור אמון וחיבור בטוח עם רותם והצוות.",
               },
               {
-                q: "איך יוצרים קשר ומתאמים סיור היכרות עם רותם עירון?",
+                q: "איך יוצרים קשר ומתאמים סיור היכרות?",
                 a: "הכי קל ומהיר! לוחצים על כפתור הווטסאפ באתר או מתקשרים ישירות לטלפון 052-8707056. רותם תשמח לשוחח, לענות על כל שאלה ולתאם מועד נוח לסיור אישי והתרשמות מהגן באריאל.",
               },
             ].map((item, idx) => {
@@ -1085,9 +1085,9 @@ export default function App() {
         <div className="w-full max-w-7xl mx-auto px-4 md:px-8 py-10 flex flex-col md:flex-row justify-between items-center gap-6">
           {/* Brand & Copyright */}
           <div className="flex flex-col items-center md:items-start text-center md:text-right gap-1">
-            <span className="text-xl font-bold text-[#5f3414] font-heading">הבית של מאיה</span>
+            <span className="text-xl font-bold text-[#5f3414] font-heading">הבית של רותם ומאיה</span>
             <p className="text-xs text-[#51443c]">
-              © כל הזכויות שמורות לבית של מאיה - בהנהלת רותם עירון, אריאל
+              © כל הזכויות שמורות לבית של רותם ומאיה, אריאל
             </p>
           </div>
           {/* Interactive Policy & Info Modals */}

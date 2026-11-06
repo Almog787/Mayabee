@@ -612,7 +612,7 @@ export function DaycareMap() {
             סיור אינטראקטיבי במרחבי הגן
           </h2>
           <p className="mt-3 text-base sm:text-lg text-[#51443c] leading-relaxed">
-            סיירו במבנה הגן של מאיה באריאל. לחצו על כל אחד מ-6 המתחמים כדי לראות את שגרת הפעילות, התקנים, והמרחב הבטוח שבו ילדכם גדל.
+            סיירו במבנה הגן "הבית של רותם ומאיה" באריאל. לחצו על כל אחד מ-6 המתחמים כדי לראות את שגרת הפעילות, התקנים, והמרחב הבטוח שבו ילדכם גדל.
           </p>
         </div>
 
@@ -636,7 +636,7 @@ export function DaycareMap() {
               onMouseLeave={handleCanvasMouseLeave}
               style={{ touchAction: 'pan-y' }}
               className="w-full h-full block cursor-pointer select-none touch-pan-y"
-              aria-label="מפה אינטראקטיבית של גן הילדים הבית של מאיה באריאל"
+              aria-label="מפה אינטראקטיבית של גן הילדים הבית של רותם ומאיה באריאל"
             />
           </div>
 

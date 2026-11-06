@@ -20,7 +20,7 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({ type, onClose }) => {
       content: (
         <div className="space-y-3 text-sm text-[#51443c] leading-relaxed">
           <p>
-            אנו ב"הבית של מאיה - בהנהלת רותם עירון" רואים חשיבות עליונה במתן שירות שוויוני ונגיש לכלל
+            אנו ב"הבית של רותם ומאיה" רואים חשיבות עליונה במתן שירות שוויוני ונגיש לכלל
             ההורים, הילדים והמבקרים.
           </p>
           <h4 className="font-bold text-[#5f3414]">נגישות פיזית במתחם הגן באריאל:</h4>
@@ -35,7 +35,7 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({ type, onClose }) => {
             מוקפדת והתאמה מלאה למכשירים ניידים.
           </p>
           <p className="text-xs text-[#84746b]">
-            בכל שאלה או בקשה בנושא נגישות, רותם עירון זמינה עבורכם בטלפון 050-0000000.
+            בכל שאלה או בקשה בנושא נגישות, אנו זמינים עבורכם בטלפון 052-8707056.
           </p>
         </div>
       ),
@@ -63,7 +63,7 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({ type, onClose }) => {
       content: (
         <div className="space-y-3 text-sm text-[#51443c] leading-relaxed">
           <p>
-            תקנון "הבית של מאיה" נועד להבטיח את שלומם, בריאותם ורווחתם של כל הפעוטות בכוורת:
+            תקנון "הבית של רותם ומאיה" נועד להבטיח את שלומם, בריאותם ורווחתם של כל הפעוטות בכוורת:
           </p>
           <h4 className="font-bold text-[#5f3414]">1. שעות פעילות וקבלת ילדים:</h4>
           <p>קבלת ילדים החל מ-07:30. איסוף עד 16:30 / 17:00 בימי חול, ועד 12:30 בימי שישי.</p>
@@ -82,7 +82,7 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({ type, onClose }) => {
       content: (
         <div className="space-y-3 text-sm text-[#51443c] leading-relaxed">
           <p>
-            "הבית של מאיה" ממוקם במיקום מרכזי, שקט, בטוח ונגיש בעיר אריאל.
+            "הבית של רותם ומאיה" ממוקם במיקום מרכזי, שקט, בטוח ונגיש בעיר אריאל.
           </p>
           <div className="p-3 bg-[#fff9f3] rounded-xl border border-[#ffdcc6]">
             <h4 className="font-bold text-[#5f3414] mb-1">חניה נוחה:</h4>

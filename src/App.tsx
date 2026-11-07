@@ -1089,6 +1089,18 @@ export default function App() {
             <p className="text-xs text-[#51443c]">
               © כל הזכויות שמורות לבית של רותם ומאיה, אריאל
             </p>
+            <p className="text-[11px] text-[#7d6e65] mt-0.5">
+              נבנה ועוצב על ידי{" "}
+              <a
+                href="https://almog787.github.io/AutoFlow/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-[#5f3414] hover:underline hover:text-[#7a4b29] transition-colors"
+                title="AutoFlow - פיתוח ובניית אתרים"
+              >
+                AutoFlow
+              </a>
+            </p>
           </div>
           {/* Interactive Policy & Info Modals */}
           <nav className="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold">
